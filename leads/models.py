@@ -5,25 +5,27 @@ from django.db import models
 class Lead(models.Model):
 
     STATUS_CHOICES = [
-        ('PENDING', 'Pending'),
-        ('YES', 'Yes'),
-        ('NO', 'No'),
-    ]
+    ('NEW', 'New'),
+    ('CONTACTED', 'Contacted'),
+    ('IN_PROGRESS', 'In Progress'),
+    ('COMPLETED', 'Completed'),
+    ('REJECTED', 'Rejected'),
+]
 
     name = models.CharField(max_length=80)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     city = models.CharField(max_length=100)
-    service = models.CharField(max_length=20)
+    service = models.CharField(max_length=50)
     message = models.TextField(
         blank=True,
         null=True
     )
 
     status = models.CharField(
-        max_length=10,
+        max_length=20,
         choices=STATUS_CHOICES,
-        default='PENDING',
+        default='NEW',
         )
     
     created_at = models.DateTimeField(
