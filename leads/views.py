@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from decouple import config
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from .models import Lead
 
@@ -56,7 +58,8 @@ Message: {message}
             from_email=config('EMAIL_HOST_USER'),
 
             recipient_list=[
-                'testmail071220002@gmail.com'
+                'testmail071220002@gmail.com',
+                'avdeshkharadiya77@gmail.com'
             ],
 
             fail_silently=False,
@@ -80,3 +83,59 @@ Message: {message}
         context
 
     )
+
+def login_view(request):
+    
+    
+    error = None
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect('/dashboard/')
+        
+        else:
+            error = "Invalid Username or Password"
+
+    contex = {
+        "error" : error
+    }
+
+    return render(
+        request,
+        'login.html',
+        contex
+
+    )
+
+
+
+def dashboard_view(request):
+    leads = Lead.objects.all().order_by('-id')
+
+    contex = {
+        'leads': leads
+
+    }
+
+    return render(
+        request,
+        'dashboard.html',
+        contex
+
+    )
+
+
+def logout_view(request):
+    logout(request)
+
+    return redirect("/login/")

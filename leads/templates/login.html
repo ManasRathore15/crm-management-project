@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen flex items-center justify-center px-6">
+
+    <div class="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md">
+
+        <h1 class="text-4xl font-bold text-center text-slate-900">
+
+            Login
+
+        </h1>
+
+        <p class="text-center text-slate-500 mt-3">
+
+            Access CRM Dashboard
+
+        </p>
+
+
+        {% if error %}
+
+        <div class="bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-2xl mt-6">
+
+            {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        <form method="POST"
+              class="mt-8 space-y-6">
+
+            {% csrf_token %}
+
+
+            <input type="text"
+                   name="username"
+                   placeholder="Username"
+                   required
+                   class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+
+            <input type="password"
+                   name="password"
+                   placeholder="Password"
+                   required
+                   class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+
+            <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-semibold shadow-lg transition">
+
+                Login
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
