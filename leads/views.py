@@ -10,6 +10,8 @@ from django.contrib.auth import (
 
 from django.contrib.auth.decorators import login_required
 
+from django.db.models import Q
+
 from decouple import config
 
 from .models import Lead
@@ -223,7 +225,29 @@ def login_view(request):
 @login_required(login_url='/login/')
 def dashboard_view(request):
 
+    search_query = request.GET.get('search','')
+
+    status_filter = request.GET.get('status','')
+
     leads = Lead.objects.all().order_by('-created_at')
+
+    if search_query:
+        leads = leads.filter(
+            Q(name__icontains=search_query) |
+            Q(phone__icontains=search_query) |
+            Q(email__icontains=search_query) |
+            Q(city__icontains=search_query) |
+            Q(service__icontains=search_query) |
+            Q(message__icontains=search_query)
+
+        )
+
+    if status_filter:
+        
+        leads = leads.filter(
+            status=status_filter
+        )
+
 
     total_leads = Lead.objects.count()
 
@@ -251,6 +275,10 @@ def dashboard_view(request):
     context = {
 
         'leads': leads,
+        
+        'search_query': search_query,
+
+        'filters': status_filter,
 
         'total_leads': total_leads,
 
