@@ -1,27 +1,66 @@
 from django.shortcuts import render, redirect
-from . models import Lead
+from django.core.mail import send_mail
+from decouple import config
 
-# Create your views here.
+from .models import Lead
+
 
 def home(request):
 
-    sucess = False
-
     if request.method == 'POST':
+
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         email = request.POST.get('email')
-        message = request.POST.get('message')
         city = request.POST.get('city')
         service = request.POST.get('service')
+        message = request.POST.get('message')
+
+        # Save Lead in Database
 
         Lead.objects.create(
+
             name=name,
             phone=phone,
             email=email,
-            message=message,
             city=city,
-            service=service
+            service=service,
+            message=message
+
+        )
+
+        # Send Email Notification
+
+        send_mail(
+
+            subject='New Lead Submitted',
+
+            message=f'''
+
+New enquiry received
+
+Name: {name}
+
+Phone: {phone}
+
+Email: {email}
+
+City: {city}
+
+Service: {service}
+
+Message: {message}
+
+''',
+
+            from_email=config('EMAIL_HOST_USER'),
+
+            recipient_list=[
+                'testmail071220002@gmail.com'
+            ],
+
+            fail_silently=False,
+
         )
 
         return redirect('/?success=true')
@@ -29,11 +68,15 @@ def home(request):
     success = request.GET.get('success')
 
     context = {
+
         'success': success
+
     }
 
     return render(
+
         request,
         'home.html',
         context
+
     )
