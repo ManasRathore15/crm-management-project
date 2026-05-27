@@ -11,6 +11,7 @@ from django.contrib.auth import (
 from django.contrib.auth.decorators import login_required
 
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 from decouple import config
 
@@ -132,7 +133,6 @@ Message: {message}
 
                 'testmail071220002@gmail.com',
 
-                'avdeshkharadiya77@gmail.com'
 
             ],
 
@@ -225,29 +225,54 @@ def login_view(request):
 @login_required(login_url='/login/')
 def dashboard_view(request):
 
-    search_query = request.GET.get('search','')
+    search_query = request.GET.get('search', '')
 
-    status_filter = request.GET.get('status','')
+    status_filter = request.GET.get('status', '')
 
-    leads = Lead.objects.all().order_by('-created_at')
+
+    # GET ALL LEADS
+
+    all_leads = Lead.objects.all().order_by('-created_at')
+
+
+    # SEARCH
 
     if search_query:
-        leads = leads.filter(
+
+        all_leads = all_leads.filter(
+
             Q(name__icontains=search_query) |
+
             Q(phone__icontains=search_query) |
+
             Q(email__icontains=search_query) |
+
             Q(city__icontains=search_query) |
-            Q(service__icontains=search_query) |
-            Q(message__icontains=search_query)
+
+            Q(service__icontains=search_query)
 
         )
 
+
+    # STATUS FILTER
+
     if status_filter:
-        
-        leads = leads.filter(
+
+        all_leads = all_leads.filter(
             status=status_filter
         )
 
+
+    # PAGINATION
+
+    paginator = Paginator(all_leads, 10)
+
+    page_number = request.GET.get('page')
+
+    leads = paginator.get_page(page_number)
+
+
+    # STATS
 
     total_leads = Lead.objects.count()
 
@@ -275,10 +300,10 @@ def dashboard_view(request):
     context = {
 
         'leads': leads,
-        
+
         'search_query': search_query,
 
-        'filters': status_filter,
+        'status_filter': status_filter,
 
         'total_leads': total_leads,
 
@@ -293,6 +318,7 @@ def dashboard_view(request):
         'rejected_leads': rejected_leads
 
     }
+
 
     return render(
 

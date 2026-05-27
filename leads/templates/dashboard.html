@@ -416,6 +416,45 @@ Dashboard
 
             </div>
 
+
+
+            <!-- Pagination -->
+
+            <div class="flex items-center justify-center gap-3 py-6">
+
+
+                {% if leads.has_previous %}
+
+                    <a href="?page={{ leads.previous_page_number }}"
+                       class="px-4 py-2 bg-white border border-slate-300 rounded-xl hover:bg-slate-100 transition">
+
+                        Previous
+
+                    </a>
+
+                {% endif %}
+
+
+                <span class="px-4 py-2 bg-blue-600 text-white rounded-xl font-medium">
+
+                    Page {{ leads.number }} of {{ leads.paginator.num_pages }}
+
+                </span>
+
+
+                {% if leads.has_next %}
+
+                    <a href="?page={{ leads.next_page_number }}"
+                       class="px-4 py-2 bg-white border border-slate-300 rounded-xl hover:bg-slate-100 transition">
+
+                        Next
+
+                    </a>
+
+                {% endif %}
+
+            </div>
+
         </div>
 
     </div>
