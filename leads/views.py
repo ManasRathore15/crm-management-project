@@ -10,6 +10,8 @@ from django.contrib.auth import (
 
 from django.contrib.auth.decorators import login_required
 
+import csv
+from django.http import HttpResponse
 from django.db.models import Q
 from django.core.paginator import Paginator
 
@@ -348,3 +350,40 @@ def logout_view(request):
     logout(request)
 
     return redirect('/login/')
+
+
+
+@login_required(login_url='/login/')
+def export_csv(request):
+
+    response = HttpResponse(content_type = 'text/csv')
+
+    response['Content-Disposition'] = 'attachment ; filename= "leads.csv"'
+
+    writer = csv.writer(response)
+
+    writer.writerow([
+        'Name',
+        'Phone',
+        'Email',
+        'City',
+        'Service',
+        'Status',
+        'Created_at',
+    ]) 
+
+
+    leads = Lead.objects.all().order_by('-created_at')
+
+    for lead in leads:
+        writer.writerow([
+            lead.name,
+            lead.phone,
+            lead.email,
+            lead.city,
+            lead.service,
+            lead.status,
+            lead.created_at
+        ])
+
+    return response

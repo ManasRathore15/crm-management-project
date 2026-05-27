@@ -303,6 +303,9 @@
   .grid {
     display: grid;
   }
+  .inline-flex {
+    display: inline-flex;
+  }
   .h-14 {
     height: calc(var(--spacing) * 14);
   }
@@ -314,6 +317,9 @@
   }
   .w-14 {
     width: calc(var(--spacing) * 14);
+  }
+  .w-fit {
+    width: fit-content;
   }
   .w-full {
     width: 100%;
@@ -427,6 +433,9 @@
   }
   .bg-green-100 {
     background-color: var(--color-green-100);
+  }
+  .bg-green-600 {
+    background-color: var(--color-green-600);
   }
   .bg-purple-100 {
     background-color: var(--color-purple-100);
@@ -673,6 +682,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-green-200);
+      }
+    }
+  }
+  .hover\:bg-green-700 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-700);
       }
     }
   }
