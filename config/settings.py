@@ -93,7 +93,7 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.parse(
-        'postgresql://neondb_owner:npg_nJkwd3Layb6h@ep-snowy-heart-apajg301.c-7.us-east-1.aws.neon.tech/neondb?sslmode=require'
+        config('DATABASE_URL')
     )
 }
 
