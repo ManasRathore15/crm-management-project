@@ -16,14 +16,14 @@ class Lead(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     city = models.CharField(max_length=100)
-    service = models.CharField(max_length=50)
+    service = models.CharField(max_length=100)
     message = models.TextField(
         blank=True,
         null=True
     )
 
     status = models.CharField(
-        max_length=20,
+        max_length=50,
         choices=STATUS_CHOICES,
         default='NEW',
         )
