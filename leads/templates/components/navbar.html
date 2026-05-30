@@ -1,48 +1,41 @@
-<nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 anim-fade-in">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
 
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
-
-        <!-- Logo -->
-
-        <a href="/"
-           class="text-2xl font-bold text-blue-600">
-
-            CRM SaaS
-
-        </a>
-
-
-        <!-- Menu -->
-
-        <div class="flex items-center gap-8">
-
-
-            <a href="#services"
-               class="text-slate-600 hover:text-slate-900 font-medium transition">
-
-                Services
-
+            <!-- Logo -->
+            <a href="{% url 'home' %}" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center
+                            shadow-lg shadow-violet-200 transition-all duration-300
+                            group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-violet-300 pulse-ring">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white transition-transform duration-300 group-hover:scale-110" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M21 8a2 2 0 00-2-2h-3V4a2 2 0 00-2-2H10a2 2 0 00-2 2v2H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8z" />
+                    </svg>
+                </div>
+                <span class="text-2xl font-extrabold text-slate-900 transition-colors duration-200 group-hover:text-violet-600">LeadFlow</span>
             </a>
 
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="nav-link font-medium text-slate-600 hover:text-violet-600 transition py-1">Services</a>
+                <a href="#enquiry" class="nav-link font-medium text-slate-600 hover:text-violet-600 transition py-1">Apply Now</a>
+                <a href="#contact" class="nav-link font-medium text-slate-600 hover:text-violet-600 transition py-1">Contact</a>
+            </div>
 
-            <a href="#enquiry"
-               class="text-slate-600 hover:text-slate-900 font-medium transition">
-
-                Enquiry
-
-            </a>
-
-
-            <a href="/admin/"
-               class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-medium transition shadow-md">
-
-                Admin Login
-
-            </a>
+            <!-- Right Buttons -->
+            <div class="flex items-center gap-4">
+                <a href="#enquiry" class="hidden sm:flex text-violet-600 font-semibold hover:text-violet-700 nav-link py-1">
+                    Apply Now
+                </a>
+                <a href="{% url 'login' %}"
+                   class="border border-violet-500 text-violet-600 px-5 py-2.5 rounded-xl font-semibold
+                          hover:bg-violet-600 hover:text-white transition-all duration-250
+                          hover:shadow-lg hover:shadow-violet-200 hover:-translate-y-0.5 ripple">
+                    Staff Login
+                </a>
+            </div>
 
         </div>
-
     </div>
-
 </nav>

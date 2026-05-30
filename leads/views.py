@@ -17,7 +17,8 @@ from django.core.paginator import Paginator
 
 from decouple import config
 
-from .models import Lead
+from .models import Lead, Agent
+from django.shortcuts import get_object_or_404
 
 
 # HOME PAGE
@@ -107,11 +108,12 @@ def home(request):
 
         # EMAIL NOTIFICATION
 
-        send_mail(
+        try:
+            send_mail(
 
-            subject='New Lead Submitted',
+                subject='New Lead Submitted',
 
-            message=f'''
+                message=f'''
 
 New enquiry received
 
@@ -129,18 +131,20 @@ Message: {message}
 
 ''',
 
-            from_email=config('EMAIL_HOST_USER'),
+                from_email=config('EMAIL_HOST_USER', default=''),
 
-            recipient_list=[
+                recipient_list=[
 
-                'testmail071220002@gmail.com',
+                    'testmail071220002@gmail.com',
 
 
-            ],
+                ],
 
-            fail_silently=False,
+                fail_silently=False,
 
-        )
+            )
+        except Exception:
+            pass
 
 
         return redirect('/?success=true')
@@ -233,8 +237,15 @@ def dashboard_view(request):
 
 
     # GET ALL LEADS
+    if request.user.is_superuser:
+        all_leads = Lead.objects.all().order_by('-created_at')
+    else:
+        try:
+            agent = Agent.objects.get(user=request.user)
+            all_leads = Lead.objects.filter(agent=agent).order_by('-created_at')
+        except Agent.DoesNotExist:
+            all_leads =Lead.objects.none()
 
-    all_leads = Lead.objects.all().order_by('-created_at')
 
 
     # SEARCH
@@ -317,7 +328,9 @@ def dashboard_view(request):
 
         'completed_leads': completed_leads,
 
-        'rejected_leads': rejected_leads
+        'rejected_leads': rejected_leads,
+
+        'agents' : Agent.objects.all()
 
     }
 
@@ -387,3 +400,40 @@ def export_csv(request):
         ])
 
     return response
+
+
+
+def assign_agent(request, lead_id):
+
+    if request.method == 'POST':
+
+        lead = get_object_or_404(Lead,id=lead_id)
+
+        agent_id = request.POST.get('agent')
+
+        if agent_id:
+            agent = Agent.objects.get(id=agent_id)
+            lead.agent = agent
+            lead.save()
+
+    return redirect('/dashboard/')
+
+
+
+@login_required
+def agents_view(request):
+    agents = Agent.objects.all()
+    return render(request, 'agents.html', {'agents': agents})
+
+
+@login_required
+def overview_view(request):
+    total_leads = Lead.objects.count()
+    completed = Lead.objects.filter(status='COMPLETED').count()
+
+    context = {
+        'total_leads': total_leads,
+        'completed': completed,
+    }
+
+    return render(request, 'overview.html', context)

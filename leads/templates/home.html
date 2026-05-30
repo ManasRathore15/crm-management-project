@@ -1,464 +1,314 @@
 {% extends 'base.html' %}
-
-{% block title %}
-CRM SaaS
-{% endblock %}
+{% block title %}LeadFlow CRM{% endblock %}
 
 {% block content %}
-
 {% include 'components/navbar.html' %}
 
+<!-- HERO -->
+<section class="py-24 bg-gradient-to-b from-violet-50 to-white relative overflow-hidden">
 
-<!-- HERO SECTION -->
+    <!-- Decorative blobs -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-violet-100 rounded-full opacity-50 blur-3xl pointer-events-none"
+         style="animation: float 8s ease-in-out infinite;"></div>
+    <div class="absolute bottom-0 -left-16 w-72 h-72 bg-purple-100 rounded-full opacity-40 blur-3xl pointer-events-none"
+         style="animation: float 10s ease-in-out infinite reverse;"></div>
 
-<section class="py-24">
-
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-
-
-        <!-- Left Content -->
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
 
         <div>
-
-            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
-
-                Modern Lead Management CRM
-
+            <span class="inline-block bg-violet-100 text-violet-700 px-4 py-2 rounded-full text-sm font-semibold
+                         anim-slide-r hover:bg-violet-200 transition-colors duration-200 cursor-default badge-pop">
+                ✦ Trusted Business Registration Platform
             </span>
 
-
-            <h1 class="mt-8 text-5xl lg:text-6xl font-extrabold leading-tight text-slate-900">
-
-                Manage Your Leads
-                Faster & Smarter
-
+            <h1 class="mt-8 text-5xl lg:text-6xl font-extrabold leading-tight text-slate-900 anim-fade-up delay-150">
+                Business Registration
+                <span class="gradient-text block">Made Simple</span>
             </h1>
 
-
-            <p class="mt-6 text-lg text-slate-600 leading-relaxed">
-
-                Capture enquiries, track progress,
-                manage agents and convert more customers
-                using our modern CRM platform.
-
+            <p class="mt-6 text-lg text-slate-600 leading-relaxed anim-fade-up delay-300">
+                GST Registration, Trademark Registration, FSSAI License and ISO Certification
+                with expert support and fast processing.
             </p>
 
-
-            <div class="mt-10 flex flex-col sm:flex-row gap-4">
-
+            <div class="mt-10 flex gap-4 flex-wrap anim-fade-up delay-400">
                 <a href="#enquiry"
-                   class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg transition">
-
-                    Get Started
-
+                   class="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-2xl font-semibold
+                          transition-all duration-250 shadow-lg shadow-violet-200
+                          hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-300
+                          ripple active:translate-y-0">
+                    Apply Now →
                 </a>
-
-
-                <a href="/login/"
-                   class="border border-slate-300 hover:border-slate-400 px-8 py-4 rounded-2xl font-semibold transition bg-white">
-
-                    Admin Login
-
+                <a href="{% url 'login' %}"
+                   class="border border-violet-300 text-slate-700 px-8 py-4 rounded-2xl font-semibold bg-white
+                          hover:bg-violet-50 hover:border-violet-500 hover:text-violet-700
+                          transition-all duration-250 hover:-translate-y-1 hover:shadow-md">
+                    Staff Login
                 </a>
-
             </div>
 
+            <!-- Trust badges -->
+            <div class="mt-10 flex items-center gap-6 flex-wrap anim-fade-up delay-500">
+                <div class="flex items-center gap-2 text-slate-500 text-sm hover:text-green-600 transition-colors duration-200 cursor-default">
+                    <svg class="w-5 h-5 text-green-500 transition-transform duration-200 hover:scale-125" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    Fast Processing
+                </div>
+                <div class="flex items-center gap-2 text-slate-500 text-sm hover:text-green-600 transition-colors duration-200 cursor-default">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    Expert Support
+                </div>
+                <div class="flex items-center gap-2 text-slate-500 text-sm hover:text-green-600 transition-colors duration-200 cursor-default">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    100% Legal
+                </div>
+            </div>
         </div>
 
-
-        <!-- Right Card -->
-
-        <div>
-
-            <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 p-8">
-
-                <div class="grid grid-cols-2 gap-5">
-
-
-                    <div class="bg-slate-50 rounded-2xl p-5">
-
-                        <p class="text-slate-500 text-sm">
-                            Total Leads
-                        </p>
-
-                        <h2 class="mt-3 text-3xl font-bold">
-                            1,240
-                        </h2>
-
-                    </div>
-
-
-                    <div class="bg-slate-50 rounded-2xl p-5">
-
-                        <p class="text-slate-500 text-sm">
-                            Converted
-                        </p>
-
-                        <h2 class="mt-3 text-3xl font-bold text-green-600">
-                            890
-                        </h2>
-
-                    </div>
-
-
-                    <div class="bg-slate-50 rounded-2xl p-5">
-
-                        <p class="text-slate-500 text-sm">
-                            Pending
-                        </p>
-
-                        <h2 class="mt-3 text-3xl font-bold text-yellow-500">
-                            210
-                        </h2>
-
-                    </div>
-
-
-                    <div class="bg-slate-50 rounded-2xl p-5">
-
-                        <p class="text-slate-500 text-sm">
-                            Agents
-                        </p>
-
-                        <h2 class="mt-3 text-3xl font-bold text-blue-600">
-                            24
-                        </h2>
-
-                    </div>
-
+        <!-- Stats Card -->
+        <div class="bg-white rounded-3xl shadow-2xl shadow-violet-100 p-8 border border-violet-50
+                    anim-slide-l delay-200
+                    hover:shadow-violet-200/60 hover:-translate-y-2 transition-all duration-400">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gradient-to-br from-violet-50 to-violet-100 rounded-2xl p-6 hover-lift cursor-default group">
+                    <h2 class="text-4xl font-extrabold text-violet-700 stat-number group-hover:scale-105 transition-transform duration-200 inline-block">5000+</h2>
+                    <p class="text-slate-600 mt-1 font-medium">Clients Served</p>
                 </div>
-
-
-                <div class="mt-8 bg-slate-50 rounded-2xl p-6">
-
-                    <div class="flex items-center justify-between">
-
-                        <div>
-
-                            <h3 class="font-semibold text-slate-900">
-                                Recent Activity
-                            </h3>
-
-                            <p class="text-sm text-slate-500">
-                                New enquiry received
-                            </p>
-
-                        </div>
-
-                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-
-                            Live
-
-                        </span>
-
-                    </div>
-
+                <div class="bg-gradient-to-br from-violet-50 to-violet-100 rounded-2xl p-6 hover-lift cursor-default group delay-100">
+                    <h2 class="text-4xl font-extrabold text-violet-700 group-hover:scale-105 transition-transform duration-200 inline-block">48hr</h2>
+                    <p class="text-slate-600 mt-1 font-medium">Response Time</p>
                 </div>
-
+                <div class="bg-gradient-to-br from-violet-50 to-violet-100 rounded-2xl p-6 hover-lift cursor-default group delay-200">
+                    <h2 class="text-4xl font-extrabold text-violet-700 group-hover:scale-105 transition-transform duration-200 inline-block">4.8★</h2>
+                    <p class="text-slate-600 mt-1 font-medium">Rating</p>
+                </div>
+                <div class="bg-gradient-to-br from-violet-50 to-violet-100 rounded-2xl p-6 hover-lift cursor-default group delay-300">
+                    <h2 class="text-4xl font-extrabold text-violet-700 group-hover:scale-105 transition-transform duration-200 inline-block">100%</h2>
+                    <p class="text-slate-600 mt-1 font-medium">Support</p>
+                </div>
             </div>
-
         </div>
 
     </div>
-
 </section>
 
 
-
-<!-- SERVICES SECTION -->
-
-<section id="services"
-         class="py-20 bg-white border-y border-slate-200">
-
+<!-- SERVICES -->
+<section id="services" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
 
-        <div class="text-center">
-
-            <h2 class="text-4xl font-bold text-slate-900">
-
-                Our Services
-
-            </h2>
-
-            <p class="mt-4 text-slate-600 text-lg">
-
-                Complete business compliance and registration solutions.
-
-            </p>
-
+        <div class="text-center mb-14 reveal">
+            <span class="inline-block bg-violet-100 text-violet-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 badge-pop">
+                What We Offer
+            </span>
+            <h2 class="text-4xl font-extrabold text-slate-900">Our Services</h2>
+            <p class="text-slate-500 mt-3 text-lg">Everything you need to register and grow your business</p>
         </div>
 
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-
-            <!-- Card -->
-
-            <div class="bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition">
-
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl">
-
-                    ✓
-
+            <div class="reveal group bg-slate-50 hover:bg-violet-50 border border-transparent hover:border-violet-200
+                        p-8 rounded-3xl transition-all duration-300 cursor-pointer hover-lift
+                        hover:shadow-lg hover:shadow-violet-100">
+                <div class="w-12 h-12 bg-violet-100 group-hover:bg-violet-200 rounded-2xl flex items-center justify-center mb-5
+                            transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <span class="text-xl">📋</span>
                 </div>
-
-                <h3 class="mt-6 text-xl font-bold text-slate-900">
-
-                    ISO Certification
-
-                </h3>
-
-                <p class="mt-3 text-slate-600 leading-relaxed">
-
-                    Fast and reliable ISO certification services for businesses.
-
-                </p>
-
+                <h3 class="font-bold text-slate-900 text-lg group-hover:text-violet-700 transition-colors duration-200">GST Registration</h3>
+                <p class="text-slate-500 text-sm mt-2 group-hover:text-slate-600 transition-colors duration-200">Get your GST number hassle-free with expert guidance.</p>
+                <div class="mt-4 flex items-center gap-1 text-violet-600 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-250 -translate-x-2 group-hover:translate-x-0 transform">
+                    Learn more →
+                </div>
             </div>
 
-
-            <!-- Card -->
-
-            <div class="bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition">
-
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl">
-
-                    ™
-
+            <div class="reveal delay-100 group bg-slate-50 hover:bg-violet-50 border border-transparent hover:border-violet-200
+                        p-8 rounded-3xl transition-all duration-300 cursor-pointer hover-lift
+                        hover:shadow-lg hover:shadow-violet-100">
+                <div class="w-12 h-12 bg-violet-100 group-hover:bg-violet-200 rounded-2xl flex items-center justify-center mb-5
+                            transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <span class="text-xl">™️</span>
                 </div>
-
-                <h3 class="mt-6 text-xl font-bold text-slate-900">
-
-                    Trademark Registration
-
-                </h3>
-
-                <p class="mt-3 text-slate-600 leading-relaxed">
-
-                    Protect your brand identity with trademark registration.
-
-                </p>
-
+                <h3 class="font-bold text-slate-900 text-lg group-hover:text-violet-700 transition-colors duration-200">Trademark Registration</h3>
+                <p class="text-slate-500 text-sm mt-2 group-hover:text-slate-600 transition-colors duration-200">Protect your brand identity with trademark registration.</p>
+                <div class="mt-4 flex items-center gap-1 text-violet-600 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-250 -translate-x-2 group-hover:translate-x-0 transform">
+                    Learn more →
+                </div>
             </div>
 
-
-            <!-- Card -->
-
-            <div class="bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition">
-
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl">
-
-                    🍴
-
+            <div class="reveal delay-200 group bg-slate-50 hover:bg-violet-50 border border-transparent hover:border-violet-200
+                        p-8 rounded-3xl transition-all duration-300 cursor-pointer hover-lift
+                        hover:shadow-lg hover:shadow-violet-100">
+                <div class="w-12 h-12 bg-violet-100 group-hover:bg-violet-200 rounded-2xl flex items-center justify-center mb-5
+                            transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <span class="text-xl">🍽️</span>
                 </div>
-
-                <h3 class="mt-6 text-xl font-bold text-slate-900">
-
-                    FSSAI License
-
-                </h3>
-
-                <p class="mt-3 text-slate-600 leading-relaxed">
-
-                    Food license registration and compliance support.
-
-                </p>
-
+                <h3 class="font-bold text-slate-900 text-lg group-hover:text-violet-700 transition-colors duration-200">FSSAI License</h3>
+                <p class="text-slate-500 text-sm mt-2 group-hover:text-slate-600 transition-colors duration-200">Food business license approved quickly and correctly.</p>
+                <div class="mt-4 flex items-center gap-1 text-violet-600 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-250 -translate-x-2 group-hover:translate-x-0 transform">
+                    Learn more →
+                </div>
             </div>
 
-
-            <!-- Card -->
-
-            <div class="bg-slate-50 hover:bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition">
-
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl">
-
-                    ₹
-
+            <div class="reveal delay-300 group bg-slate-50 hover:bg-violet-50 border border-transparent hover:border-violet-200
+                        p-8 rounded-3xl transition-all duration-300 cursor-pointer hover-lift
+                        hover:shadow-lg hover:shadow-violet-100">
+                <div class="w-12 h-12 bg-violet-100 group-hover:bg-violet-200 rounded-2xl flex items-center justify-center mb-5
+                            transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    <span class="text-xl">🏆</span>
                 </div>
-
-                <h3 class="mt-6 text-xl font-bold text-slate-900">
-
-                    GST Registration
-
-                </h3>
-
-                <p class="mt-3 text-slate-600 leading-relaxed">
-
-                    Hassle-free GST registration and filing assistance.
-
-                </p>
-
+                <h3 class="font-bold text-slate-900 text-lg group-hover:text-violet-700 transition-colors duration-200">ISO Certification</h3>
+                <p class="text-slate-500 text-sm mt-2 group-hover:text-slate-600 transition-colors duration-200">Get internationally recognized ISO certification fast.</p>
+                <div class="mt-4 flex items-center gap-1 text-violet-600 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-250 -translate-x-2 group-hover:translate-x-0 transform">
+                    Learn more →
+                </div>
             </div>
 
         </div>
-
     </div>
-
 </section>
 
 
+<!-- ENQUIRY FORM -->
+<section id="enquiry" class="py-20 bg-gradient-to-b from-white to-violet-50 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-20 right-10 w-64 h-64 bg-violet-100 rounded-full opacity-30 blur-3xl"
+             style="animation: float 12s ease-in-out infinite;"></div>
+    </div>
 
-<!-- ENQUIRY SECTION -->
+    <div class="max-w-3xl mx-auto px-6 relative">
 
-<section id="enquiry"
-         class="py-24">
+        <div class="text-center mb-10 reveal">
+            <span class="inline-block bg-violet-100 text-violet-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 badge-pop">
+                Get Started Today
+            </span>
+            <h2 class="text-4xl font-extrabold text-slate-900">Apply for Registration</h2>
+            <p class="text-slate-500 mt-3">Fill the form below and our team will contact you within 24 hours.</p>
+        </div>
 
-    <div class="max-w-3xl mx-auto px-6">
-
-
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl p-10">
-
+        <div class="bg-white rounded-[32px] shadow-2xl shadow-violet-100 border border-violet-50 p-10
+                    reveal hover:shadow-violet-200/60 transition-shadow duration-500">
 
             {% if success %}
-
-            <div class="bg-green-100 border border-green-300 text-green-700 px-5 py-4 rounded-2xl mb-8">
-
-                Enquiry submitted successfully!
-
+            <div class="bg-green-50 border border-green-200 text-green-700 px-5 py-4 rounded-2xl mb-6 flex items-center gap-3 anim-scale-in">
+                <svg class="w-5 h-5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                Enquiry submitted successfully! We'll contact you soon.
             </div>
-
             {% endif %}
 
-
-            <div class="text-center">
-
-                <h2 class="text-4xl font-bold text-slate-900">
-
-                    Submit Your Enquiry
-
-                </h2>
-
-                <p class="mt-4 text-slate-600">
-
-                    Fill the form and our team will contact you soon.
-
-                </p>
-
-            </div>
-            
             {% if error %}
-
-            <div class="bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-2xl mb-6">
-
+            <div class="bg-red-50 border border-red-200 text-red-700 px-5 py-4 rounded-2xl mb-6 anim-scale-in">
                 {{ error }}
-
             </div>
-
             {% endif %}
 
-            <form method="POST"
-                  class="mt-10 space-y-6">
-
+            <form method="POST" class="space-y-5">
                 {% csrf_token %}
 
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div class="group">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+                        <input type="text" name="name" placeholder="Ramesh Kumar" required
+                               class="w-full border border-slate-200 rounded-2xl px-5 py-4
+                                      focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                      hover:border-violet-300 transition-all duration-200
+                                      focus:shadow-md focus:shadow-violet-100">
+                    </div>
+                    <div class="group">
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                        <input type="text" name="phone" placeholder="9876543210" required
+                               class="w-full border border-slate-200 rounded-2xl px-5 py-4
+                                      focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                      hover:border-violet-300 transition-all duration-200
+                                      focus:shadow-md focus:shadow-violet-100">
+                    </div>
+                </div>
 
-                <input type="text"
-                       name="name"
-                       placeholder="Full Name"
-                       required
-                       class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+                        <input type="email" name="email" placeholder="ramesh@email.com" required
+                               class="w-full border border-slate-200 rounded-2xl px-5 py-4
+                                      focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                      hover:border-violet-300 transition-all duration-200
+                                      focus:shadow-md focus:shadow-violet-100">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">City</label>
+                        <input type="text" name="city" placeholder="Mumbai" required
+                               class="w-full border border-slate-200 rounded-2xl px-5 py-4
+                                      focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                      hover:border-violet-300 transition-all duration-200
+                                      focus:shadow-md focus:shadow-violet-100">
+                    </div>
+                </div>
 
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Select Service</label>
+                    <select name="service" required
+                            class="w-full border border-slate-200 rounded-2xl px-5 py-4
+                                   focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                   hover:border-violet-300 transition-all duration-200 bg-white
+                                   focus:shadow-md focus:shadow-violet-100 cursor-pointer">
+                        <option value="">Choose a service...</option>
+                        <option value="GST">GST Registration</option>
+                        <option value="TRADEMARK_REGISTRATION">Trademark Registration</option>
+                        <option value="FSSAI_LICENSE">FSSAI License</option>
+                        <option value="ISO_CERTIFICATION">ISO Certification</option>
+                    </select>
+                </div>
 
-                <input type="text"
-                       name="phone"
-                       placeholder="Phone Number"
-                       required
-                       class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-
-                <input type="email"
-                       name="email"
-                       placeholder="Email Address"
-                       required
-                       class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-
-                <input type="text"
-                       name="city"
-                       placeholder="City"
-                       required
-                       class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-
-                <select name="service"
-                        required
-                        class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-                    <option value="">
-                        Select Service
-                    </option>
-
-                    <option value="ISO_CERTIFICATION">
-                        ISO Certification
-                    </option>
-
-                    <option value="TRADEMARK_REGISTRATION">
-                        Trademark Registration
-                    </option>
-
-                    <option value="FSSAI_LICENSE">
-                        FSSAI License
-                    </option>
-
-                    <option value="GST">
-                        GST Registration
-                    </option>
-
-                </select>
-
-
-                <textarea name="message"
-                          rows="5"
-                          placeholder="Your Message"
-                          class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Message (Optional)</label>
+                    <textarea name="message" rows="4" placeholder="Tell us more about your requirements..."
+                              class="w-full border border-slate-200 rounded-2xl px-5 py-4
+                                     focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                     hover:border-violet-300 transition-all duration-200 resize-none
+                                     focus:shadow-md focus:shadow-violet-100"></textarea>
+                </div>
 
                 <button type="submit"
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-semibold shadow-lg transition">
-
-                    Submit Enquiry
-
+                        class="w-full bg-gradient-to-r from-violet-600 via-purple-600 to-violet-600
+                               bg-size-200 text-white py-4 rounded-2xl font-semibold text-lg
+                               shadow-lg shadow-violet-200
+                               btn-shimmer ripple
+                               hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-300
+                               transition-all duration-300 active:translate-y-0">
+                    Submit Application →
                 </button>
-
             </form>
-
         </div>
-
     </div>
-
 </section>
-
 
 
 <!-- FOOTER -->
-
-<footer class="bg-white border-t border-slate-200">
-
-    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-
-        <div>
-
-            <h3 class="text-xl font-bold text-slate-900">
-                CRM SaaS
-            </h3>
-
-            <p class="text-slate-500 mt-1">
-                Modern Lead Management Platform
-            </p>
-
+<footer id="contact" class="bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3 group">
+                <div class="w-9 h-9 bg-violet-600 rounded-xl flex items-center justify-center
+                            transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-lg group-hover:shadow-violet-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M21 8a2 2 0 00-2-2h-3V4a2 2 0 00-2-2H10a2 2 0 00-2 2v2H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-slate-900 group-hover:text-violet-700 transition-colors duration-200">LeadFlow Business Services</h3>
+                    <p class="text-slate-500 text-sm">Business Compliance & Registration Solutions</p>
+                </div>
+            </div>
+            <p class="text-slate-400 text-sm">© 2025 LeadFlow. All rights reserved.</p>
         </div>
-
-
-        <p class="text-slate-500 text-sm">
-
-            © 2026 CRM SaaS. All rights reserved.
-
-        </p>
-
     </div>
-
 </footer>
-
 
 {% endblock %}

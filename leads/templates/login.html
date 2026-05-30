@@ -1,70 +1,139 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Login
-{% endblock %}
+{% block title %}Staff Login{% endblock %}
 
 {% block content %}
 
-<div class="min-h-screen flex items-center justify-center px-6">
+<div class="min-h-screen bg-[#F8F8FB] flex items-center justify-center px-6 relative overflow-hidden">
 
-    <div class="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md">
+    <!-- Animated background blobs -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"
+         style="animation: float 7s ease-in-out infinite;"></div>
+    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-25"
+         style="animation: float 9s ease-in-out infinite reverse;"></div>
+    <div class="absolute top-1/2 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+         style="animation: float 11s ease-in-out infinite;"></div>
 
-        <h1 class="text-4xl font-bold text-center text-slate-900">
+    <div class="w-full max-w-md relative anim-scale-in">
 
-            Login
+        <div class="bg-white rounded-[32px] border border-slate-200 shadow-xl shadow-violet-100/40 p-10
+                    hover:shadow-2xl hover:shadow-violet-200/50 transition-shadow duration-500">
 
-        </h1>
+            <!-- Icon -->
+            <div class="flex justify-center">
+                <div class="w-14 h-14 bg-violet-600 rounded-2xl flex items-center justify-center
+                            shadow-lg shadow-violet-300 icon-float pulse-ring cursor-pointer
+                            hover:scale-110 hover:rotate-6 transition-transform duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z"/>
+                    </svg>
+                </div>
+            </div>
 
-        <p class="text-center text-slate-500 mt-3">
+            <!-- Heading -->
+            <h1 class="text-center text-4xl font-extrabold text-slate-900 mt-6 anim-fade-up delay-100">Staff Login</h1>
+            <p class="text-center text-slate-500 mt-2 anim-fade-up delay-200">Admin & Agent access only</p>
 
-            Access CRM Dashboard
+            <!-- Error -->
+            {% if error %}
+            <div class="mt-5 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm anim-scale-in
+                        animate-shake">
+                {{ error }}
+            </div>
+            {% endif %}
 
-        </p>
+            <!-- Form -->
+            <form method="POST" class="mt-8 space-y-4">
+                {% csrf_token %}
 
+                <div class="anim-fade-up delay-300">
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Username</label>
+                    <div class="relative group">
+                        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-violet-500 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        <input type="text" name="username" required placeholder="Enter username"
+                               class="w-full border border-slate-200 rounded-xl pl-12 pr-4 py-4
+                                      focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                      hover:border-violet-300 transition-all duration-200
+                                      focus:shadow-lg focus:shadow-violet-100">
+                    </div>
+                </div>
 
-        {% if error %}
+                <div class="anim-fade-up delay-400">
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
+                    <div class="relative group">
+                        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-violet-500 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <input type="password" name="password" required placeholder="Enter password" id="passwordInput"
+                               class="w-full border border-slate-200 rounded-xl pl-12 pr-12 py-4
+                                      focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
+                                      hover:border-violet-300 transition-all duration-200
+                                      focus:shadow-lg focus:shadow-violet-100">
+                        <!-- toggle eye -->
+                        <button type="button" id="togglePwd"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-violet-500 transition-colors duration-200">
+                            <svg id="eyeIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-2xl mt-6">
+                <div class="anim-fade-up delay-500">
+                    <button type="submit"
+                            class="w-full py-4 rounded-xl
+                                   bg-gradient-to-r from-violet-600 via-purple-600 to-violet-600
+                                   bg-size-200
+                                   text-white font-semibold text-lg
+                                   shadow-lg shadow-violet-200
+                                   btn-shimmer ripple
+                                   transition-all duration-300 mt-2
+                                   hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-300
+                                   active:translate-y-0 active:shadow-md">
+                        Login to Dashboard
+                    </button>
+                </div>
+            </form>
 
-            {{ error }}
+            <!-- Demo Box -->
+            <div class="mt-6 bg-slate-50 rounded-xl p-4 border border-slate-100 anim-fade-up delay-600
+                        hover:border-violet-200 hover:bg-violet-50/50 transition-all duration-250 cursor-default">
+                <h3 class="font-semibold text-slate-700 mb-2 text-sm flex items-center gap-2">
+                    <span class="w-4 h-4 bg-green-400 rounded-full inline-block" style="animation: pulse-ring 2s ease infinite"></span>
+                    Demo Credentials:
+                </h3>
+                <p class="text-sm text-slate-500 font-mono">Admin: admin@leadflow.in / admin123</p>
+                <p class="text-sm text-slate-500 mt-1 font-mono">Agent: priya@leadflow.in / agent123</p>
+            </div>
+
+            <!-- Back Link -->
+            <div class="text-center mt-8 anim-fade-up delay-700">
+                <a href="/" class="text-slate-400 hover:text-violet-600 transition-colors duration-200 text-sm group inline-flex items-center gap-1">
+                    <span class="transition-transform duration-200 group-hover:-translate-x-1">←</span>
+                    Back to Home
+                </a>
+            </div>
 
         </div>
-
-        {% endif %}
-
-
-        <form method="POST"
-              class="mt-8 space-y-6">
-
-            {% csrf_token %}
-
-
-            <input type="text"
-                   name="username"
-                   placeholder="Username"
-                   required
-                   class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-
-            <input type="password"
-                   name="password"
-                   placeholder="Password"
-                   required
-                   class="w-full border border-slate-300 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
-
-
-            <button type="submit"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-semibold shadow-lg transition">
-
-                Login
-
-            </button>
-
-        </form>
-
     </div>
-
 </div>
+
+<script>
+    const togglePwd = document.getElementById('togglePwd');
+    const passwordInput = document.getElementById('passwordInput');
+    const eyeIcon = document.getElementById('eyeIcon');
+    if (togglePwd) {
+        togglePwd.addEventListener('click', () => {
+            const isText = passwordInput.type === 'text';
+            passwordInput.type = isText ? 'password' : 'text';
+            eyeIcon.style.opacity = isText ? '0.4' : '1';
+        });
+    }
+</script>
 
 {% endblock %}
