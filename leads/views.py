@@ -147,7 +147,7 @@ Message: {message}
             pass
 
 
-        return redirect('/?success=true')
+        return redirect('/?success=true#enquiry')
 
 
     success = request.GET.get('success')
