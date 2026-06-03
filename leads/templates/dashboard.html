@@ -2,6 +2,7 @@
 {% block title %}Dashboard – LeadFlow CRM{% endblock %}
 
 {% block content %}
+{% load static %}
 
 <div class="min-h-screen bg-[#F8F8FB]">
 
@@ -12,15 +13,11 @@
 
                 <!-- Brand -->
                 <div class="flex items-center gap-3 group cursor-default">
-                    <div class="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center
-                                shadow-md shadow-violet-200
-                                transition-all duration-300 group-hover:scale-110 group-hover:rotate-6
-                                group-hover:shadow-lg group-hover:shadow-violet-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M21 8a2 2 0 00-2-2h-3V4a2 2 0 00-2-2H10a2 2 0 00-2 2v2H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8z" />
-                        </svg>
+                    <div class="w-12 h-12 flex items-center justify-center
+                                transition-all duration-300 group-hover:scale-110">
+                            <img src="{% static 'images/msme-logo.png' %}"
+                                alt="MSME Logo"
+                                class="w-full h-full object-contain">
                     </div>
                     <div>
                         <span class="text-xl font-extrabold text-slate-900 group-hover:text-violet-700 transition-colors duration-200">LeadFlow</span>
@@ -34,24 +31,34 @@
                         Welcome, <span class="text-slate-800 font-semibold">{{ request.user.username }}</span>
                     </span>
                     <a href="/export-csv/"
-                       class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-xl font-semibold text-sm
-                              transition-all duration-200 shadow-md shadow-green-100
-                              hover:-translate-y-0.5 hover:shadow-lg hover:shadow-green-200 ripple active:translate-y-0">
-                        <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                        </svg>
-                        Export CSV
+                    class="flex items-center gap-1.5 bg-violet-600 hover:bg-violet-700 text-white
+                    px-3 py-2 rounded-lg font-medium text-xs
+                    transition-all duration-200 shadow-md shadow-violet-100
+                    hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-200">
+    
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+
+                    CSV
                     </a>
+
+
+
                     <a href="/logout/"
-                       class="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-xl font-semibold text-sm
-                              transition-all duration-200 shadow-md shadow-red-100
-                              hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-200 ripple active:translate-y-0">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-                        </svg>
-                        Logout
+                    class="inline-flex items-center gap-1.5
+                          border border-red-200 bg-white text-red-600
+                          px-3 py-2 rounded-lg text-xs font-semibold
+                          hover:bg-red-50 hover:border-red-300
+                          transition-all duration-200">
+    
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+
+                    Logout
                     </a>
                 </div>
 

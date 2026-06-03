@@ -85,6 +85,10 @@ def home(request):
                 }
 
             )
+        exisiting_lead = Lead.objects.filter( phone=phone, service=service).exists()
+
+        if exisiting_lead:
+            return render(request, 'home.html', {'error': f"You have already submitted a enquiry for {service}"})
 
 
         # SAVE LEAD
