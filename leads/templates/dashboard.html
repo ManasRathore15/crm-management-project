@@ -13,11 +13,8 @@
 
                 <!-- Brand -->
                 <div class="flex items-center gap-3 group cursor-default">
-                    <div class="w-12 h-12 flex items-center justify-center
-                                transition-all duration-300 group-hover:scale-110">
-                            <img src="{% static 'images/msme-logo.png' %}"
-                                alt="MSME Logo"
-                                class="w-full h-full object-contain">
+                    <div class="w-15 h-15 flex items-center justify-center transition-all duration-300 group-hover:scale-110">
+                        <img src="{% static 'images/msme-logo.png' %}" alt="MSME Logo" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <span class="text-xl font-extrabold text-slate-900 group-hover:text-violet-700 transition-colors duration-200">LeadFlow</span>
@@ -31,34 +28,27 @@
                         Welcome, <span class="text-slate-800 font-semibold">{{ request.user.username }}</span>
                     </span>
                     <a href="/export-csv/"
-                    class="flex items-center gap-1.5 bg-violet-600 hover:bg-violet-700 text-white
-                    px-3 py-2 rounded-lg font-medium text-xs
-                    transition-all duration-200 shadow-md shadow-violet-100
-                    hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-200">
-    
-                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                    </svg>
-
-                    CSV
+                       class="flex items-center gap-1.5 bg-violet-600 hover:bg-violet-700 text-white
+                              px-3 py-2 rounded-lg font-medium text-xs
+                              transition-all duration-200 shadow-md shadow-violet-100
+                              hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-200">
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        CSV
                     </a>
-
-
-
                     <a href="/logout/"
-                    class="inline-flex items-center gap-1.5
-                          border border-red-200 bg-white text-red-600
-                          px-3 py-2 rounded-lg text-xs font-semibold
-                          hover:bg-red-50 hover:border-red-300
-                          transition-all duration-200">
-    
-                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-                    </svg>
-
-                    Logout
+                       class="inline-flex items-center gap-1.5
+                              border border-red-200 bg-white text-red-600
+                              px-3 py-2 rounded-lg text-xs font-semibold
+                              hover:bg-red-50 hover:border-red-300
+                              transition-all duration-200">
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        Logout
                     </a>
                 </div>
 
@@ -74,7 +64,6 @@
             <h1 class="text-3xl font-extrabold text-slate-900">CRM Dashboard</h1>
             <p class="text-slate-500 mt-1">Manage all your leads efficiently</p>
         </div>
-
 
         <!-- STATS -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
@@ -117,13 +106,12 @@
 
         </div>
 
-
         <!-- SEARCH + FILTER -->
         <form method="GET" class="flex flex-col md:flex-row gap-4 mb-8 anim-fade-up delay-200">
 
             <div class="relative flex-1 group">
-                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-violet-500 transition-colors duration-200" fill="none"
-                     viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-violet-500 transition-colors duration-200"
+                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                 </svg>
@@ -140,11 +128,11 @@
                            focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent
                            hover:border-violet-300 transition-all duration-200 shadow-sm min-w-[180px] cursor-pointer">
                 <option value="">All Status</option>
-                <option value="NEW"       {% if status_filter == 'NEW' %}selected{% endif %}>New</option>
-                <option value="CONTACTED" {% if status_filter == 'CONTACTED' %}selected{% endif %}>Contacted</option>
+                <option value="NEW"         {% if status_filter == 'NEW' %}selected{% endif %}>New</option>
+                <option value="CONTACTED"   {% if status_filter == 'CONTACTED' %}selected{% endif %}>Contacted</option>
                 <option value="IN_PROGRESS" {% if status_filter == 'IN_PROGRESS' %}selected{% endif %}>In Progress</option>
-                <option value="COMPLETED" {% if status_filter == 'COMPLETED' %}selected{% endif %}>Completed</option>
-                <option value="REJECTED"  {% if status_filter == 'REJECTED' %}selected{% endif %}>Rejected</option>
+                <option value="COMPLETED"   {% if status_filter == 'COMPLETED' %}selected{% endif %}>Completed</option>
+                <option value="REJECTED"    {% if status_filter == 'REJECTED' %}selected{% endif %}>Rejected</option>
             </select>
 
             <button type="submit"
@@ -161,19 +149,19 @@
 
         </form>
 
-        <!-- TABLE -->
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden anim-fade-up delay-300">
-            <table class="w-full">
+        <!-- TABLE — overflow-x-auto so Date column is never clipped -->
+        <div class="overflow-x-auto bg-white rounded-3xl border border-slate-200 shadow-sm anim-fade-up delay-300">
+            <table class="w-full min-w-[900px]">
                 <thead class="bg-slate-50 border-b border-slate-200">
                     <tr>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left">Name</th>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left">Phone</th>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left hidden lg:table-cell">Email</th>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left hidden md:table-cell">City</th>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left">Service</th>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left">Agent</th>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left">Status</th>
-                        <th class="px-6 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left hidden sm:table-cell">Date</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">Name</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">Phone</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">Email</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">City</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">Service</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">Agent</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">Status</th>
+                        <th class="px-4 py-5 text-xs font-bold text-slate-500 uppercase tracking-wide text-left whitespace-nowrap">Date</th>
                     </tr>
                 </thead>
 
@@ -183,30 +171,30 @@
                     <tr class="tr-hover transition-all duration-150 group"
                         style="animation: fadeUp 0.4s ease both; animation-delay: {{ forloop.counter0 }}00ms;">
 
-                        <td class="px-6 py-5">
-                            <span class="font-semibold text-slate-900 group-hover:text-violet-700 transition-colors duration-150">{{ lead.name }}</span>
+                        <td class="px-4 py-4">
+                            <span class="font-semibold text-slate-900 group-hover:text-violet-700 transition-colors duration-150 whitespace-nowrap">{{ lead.name }}</span>
                         </td>
 
-                        <td class="px-6 py-5 text-slate-600 text-sm font-mono">{{ lead.phone }}</td>
-                        <td class="px-6 py-5 text-slate-600 text-sm hidden lg:table-cell">{{ lead.email }}</td>
-                        <td class="px-6 py-5 text-slate-600 hidden md:table-cell">{{ lead.city }}</td>
+                        <td class="px-4 py-4 text-slate-600 text-sm font-mono whitespace-nowrap">{{ lead.phone }}</td>
+                        <td class="px-4 py-4 text-slate-600 text-sm max-w-[180px] truncate">{{ lead.email }}</td>
+                        <td class="px-4 py-4 text-slate-600 whitespace-nowrap">{{ lead.city }}</td>
 
-                        <td class="px-6 py-5">
+                        <td class="px-4 py-4">
                             <span class="inline-flex items-center bg-violet-50 text-violet-700 text-xs font-semibold px-3 py-1.5 rounded-lg
-                                         badge-pop hover:bg-violet-100 transition-colors duration-150 cursor-default">
+                                         badge-pop hover:bg-violet-100 transition-colors duration-150 cursor-default whitespace-nowrap">
                                 {{ lead.service }}
                             </span>
                         </td>
 
                         <!-- AGENT -->
-                        <td class="px-6 py-5">
+                        <td class="px-4 py-4">
                             {% if request.user.is_superuser %}
                             <form method="POST" action="{% url 'assign_agent' lead.id %}">
                                 {% csrf_token %}
                                 <select name="agent" onchange="this.form.submit()"
                                         class="bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900
                                                focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all duration-200
-                                               hover:border-violet-300 cursor-pointer hover:shadow-sm">
+                                               hover:border-violet-300 cursor-pointer hover:shadow-sm max-w-[130px]">
                                     <option value="">Assign Agent</option>
                                     {% for agent in agents %}
                                     <option value="{{ agent.id }}" {% if lead.agent == agent %}selected{% endif %}>
@@ -217,23 +205,23 @@
                             </form>
                             {% else %}
                                 {% if lead.agent %}
-                                <span class="inline-flex items-center bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1.5 rounded-lg badge-pop cursor-default">
+                                <span class="inline-flex items-center bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1.5 rounded-lg badge-pop cursor-default whitespace-nowrap">
                                     {{ lead.agent.user.username }}
                                 </span>
                                 {% else %}
-                                <span class="text-slate-400 text-sm">No Agent</span>
+                                <span class="text-slate-400 text-sm whitespace-nowrap">No Agent</span>
                                 {% endif %}
                             {% endif %}
                         </td>
 
                         <!-- STATUS -->
-                        <td class="px-6 py-5">
+                        <td class="px-4 py-4">
                             <form method="POST" action="{% url 'update_status' lead.id %}">
                                 {% csrf_token %}
                                 <select name="status" onchange="this.form.submit()"
-                                        class="border rounded-xl px-3 py-2 text-sm bg-white
+                                        class="border rounded-xl px-3 py-2 text-sm
                                                focus:outline-none focus:ring-2 focus:ring-violet-500
-                                               hover:shadow-sm cursor-pointer transition-all duration-200
+                                               hover:shadow-sm cursor-pointer transition-all duration-200 whitespace-nowrap
                                                {% if lead.status == 'NEW' %}border-blue-200 text-blue-700 bg-blue-50 hover:border-blue-400
                                                {% elif lead.status == 'CONTACTED' %}border-violet-200 text-violet-700 bg-violet-50 hover:border-violet-400
                                                {% elif lead.status == 'IN_PROGRESS' %}border-yellow-200 text-yellow-700 bg-yellow-50 hover:border-yellow-400
@@ -249,7 +237,7 @@
                             </form>
                         </td>
 
-                        <td class="px-6 py-5 text-slate-400 text-sm hidden sm:table-cell">
+                        <td class="px-4 py-4 text-slate-400 text-sm whitespace-nowrap">
                             {{ lead.created_at|date:"d M Y" }}
                         </td>
 
